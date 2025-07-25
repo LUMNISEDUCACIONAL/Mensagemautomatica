@@ -43,20 +43,20 @@ if enviar:
 
                     st.write(f"➡️ Enviando para {nome} ({telefone})...")
 
-                    # Envia a mensagem e aguarda a página carregar
                     kit.sendwhatmsg_instantly(telefone, mensagem, wait_time=10, tab_close=False)
-                    time.sleep(10)  # Aguarda o campo de digitação carregar
-                    pyautogui.press("enter")  # Pressiona Enter para enviar
+                    time.sleep(10)
+                    pyautogui.press("enter")
 
                     resultados.append((nome, telefone, "✅ Enviado"))
-                    time.sleep(5)  # Aguarda um pouco entre os envios
+                    time.sleep(5)
 
                 except Exception as e:
                     resultados.append((linha, '', f"❌ Erro: {str(e)}"))
 
         st.success("✅ Finalizado!")
-
-
         st.subheader("📊 Relatório de envio:")
         for nome, telefone, status in resultados:
             st.write(f"{nome} | {telefone} → {status}")
+if __name__ == "__main__":
+    import webbrowser
+    webbrowser.open("http://localhost:8501")
